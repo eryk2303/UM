@@ -1,3 +1,8 @@
+import sys
+
+sys.setrecursionlimit(10 ** 6)
+
+
 def count_elements(training_elements):
     count_data = {}
     for count in training_elements:

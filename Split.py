@@ -1,10 +1,10 @@
 import Mesure
 
 
-def find_split(training_data):
+def make_split(training_data):
     best_gain_value = 0
     best_question_split = None
-
+    best_true_data, best_false_data = [], []
     for column in range(len(training_data[0]) - 1):
         value =  set([data[column] for data in training_data])
         for unique_value in value:
@@ -14,14 +14,13 @@ def find_split(training_data):
             true_data, false_data = [], []
 
             for data in training_data:
-
                 if isinstance(question_split[1], int) or isinstance(question_split[1], float):
-                    if (question_split[1] <= data[column]):
+                    if (question_split[1] <= data[question_split[0]]):
                         true_data.append(data)
                     else:
                         false_data.append(data)
                 else:
-                    if (question_split[1] == data[column]):
+                    if (question_split[1] == data[question_split[0]]):
                         true_data.append(data)
                     else:
                         false_data.append(data)
@@ -33,17 +32,9 @@ def find_split(training_data):
             if gain >= best_gain_value:
                 best_gain_value = gain
                 best_question_split = question_split
+                best_false_data = false_data
+                best_true_data = true_data
+
+    return best_gain_value, best_question_split, best_true_data, best_false_data
 
 
-    return best_gain_value, best_question_split
-
-
-training_data = [
-    ['Green', 3, 'Apple'],
-    ['Yellow', 3, 'Apple'],
-    ['Red', 10, 'Grape'],
-    ['Red', 1, 'Grape'],
-    ['Yellow', 30, 'Lemon'],
-]
-
-find_split(training_data)
