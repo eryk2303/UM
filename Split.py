@@ -6,7 +6,8 @@ def make_split(training_data):
     best_question_split = None
     best_true_data, best_false_data = [], []
     for column in range(len(training_data[0]) - 1):
-        value =  set([data[column] for data in training_data])
+        value = set([data[column] for data in training_data])
+
         for unique_value in value:
 
             question_split = column, unique_value
@@ -15,12 +16,12 @@ def make_split(training_data):
 
             for data in training_data:
                 if isinstance(question_split[1], int) or isinstance(question_split[1], float):
-                    if (question_split[1] <= data[question_split[0]]):
+                    if question_split[1] <= data[question_split[0]]:
                         true_data.append(data)
                     else:
                         false_data.append(data)
                 else:
-                    if (question_split[1] == data[question_split[0]]):
+                    if question_split[1] == data[question_split[0]]:
                         true_data.append(data)
                     else:
                         false_data.append(data)

@@ -1,9 +1,7 @@
-import sys
-
-sys.setrecursionlimit(10 ** 6)
 
 
-def count_elements(training_elements):
+
+def count(training_elements):
     count_data = {}
     for count in training_elements:
         # ostatni element
@@ -15,7 +13,7 @@ def count_elements(training_elements):
 
 
 def giny(training_data):
-    quantity = count_elements(training_data)
+    quantity = count(training_data)
     giny_tmp = 0
     for elements in quantity:
         giny_tmp += (quantity[elements] / len(training_data)) ** 2
