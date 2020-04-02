@@ -1,6 +1,5 @@
 import Mesure
 
-
 def make_split(training_data):
     best_gain_value = 0
     best_question_split = None

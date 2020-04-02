@@ -5,7 +5,7 @@ def count(training_elements):
     count_data = {}
     for count in training_elements:
         # ostatni element
-        tmp = count[-1]
+        tmp = count[3]
         if tmp not in count_data:
             count_data[tmp] = 0
         count_data[tmp] += 1

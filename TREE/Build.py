@@ -1,5 +1,7 @@
 import Split
 import Mesure
+import Data
+
 
 
 class Subtree_Values:
@@ -24,12 +26,6 @@ def build_tree(training_data):
 
     return Subtree_Values(question[1], right_next, left_next, gain), Quantity(training_data)
 
-training_data = [
-    ['Green', 3, 'Apple'],
-    ['Yellow', 3, 'Apple'],
-    ['Red', 10, 'Grape'],
-    ['Red', 1, 'Grape'],
-    ['Yellow', 30, 'Lemon'],
-]
+training_data, test_data = Data.first_test()
 
 tree = build_tree(training_data)
