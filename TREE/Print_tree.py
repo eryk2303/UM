@@ -29,3 +29,4 @@ if Build.tree[0].true_data is not None and Build.tree[0].false_data is not None:
     new_data = Data.secound() + Build.tree[0].true_data + Build.tree[0].false_data
 
 print_tree(Re_build.rebuild(new_data, Build.tree), "")
+#print_tree(Build.tree, "")
