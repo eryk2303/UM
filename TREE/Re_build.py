@@ -5,31 +5,35 @@ import Data
 
 
 def find_tree(tree, data):
+    if tree is not None:
+        if tree[0].true_data and tree[0].false_data is not None:
+            if Mesure.count(data) == Mesure.count(tree[0].true_data + tree[0].false_data):
+                return tree
+            else:
+                if tree[0].right_next is not None:
+                    find_tree(tree[0].right_next, data)
+                if tree[0].left_next is not None:
+                    find_tree(tree[0].left_next, data)
 
-    if tree[0].true_data and tree[0].false_data is not None:
-        if Mesure.count(data) == Mesure.count(tree[0].true_data + tree[0].false_data):
-            print(Mesure.count(data))
-            return tree
-        else:
-            if tree[0].right_next is not None:
-                find_tree(tree[0].right_next, data)
-            if tree[0].left_next is not None:
-                find_tree(tree[0].left_next, data)
+                if tree[0].right_next and tree[0].left_next is not None:
+                    return 0
 
 
 def rebuild(data, tree):
     gain, question, true_data, false_data = Split.make_split(data)
     if tree is not None:
-        if tree[0].right_next is not None:
-            tmp_tree = find_tree(tree, data)
-            print(tmp_tree)
+        if tree[0].right_next and tree[0].left_next is not None:
+
+            while True:
+                tmp_tree = find_tree(tree, data)
+                if tmp_tree is not None:
+                    if tmp_tree is not 0:
+                        tree = tmp_tree
+                        return Build.Subtree_Values(question, tree[0].right_next, tree[0].left_next, gain, true_data,
+                                                    false_data), Build.Quantity(data)
+                    break
 
             gain_old, question_old, true_data_old, false_data_old = Split.check_split(data, tree[0].question)
-
-            if len(tree[0].true_data) and len(tree[0].false_data):
-                if Mesure.count(data) is Mesure.count(tree[0].true_data + tree[0].false_data):
-                    return Build.Subtree_Values(question, tree[0].right_next, tree[0].left_next, gain, true_data,
-                                                false_data), Build.Quantity(data)
 
             if gain - gain_old > 0.1 or gain_old is 0:
                 if gain == 0:
@@ -106,6 +110,6 @@ if Build.tree[0].false_data is not None:
 if Build.tree[0].true_data is not None:
     new_data = Data.secound() + Build.tree[0].true_data
 if Build.tree[0].true_data is not None and Build.tree[0].false_data is not None:
-    new_data = Data.secound() + Build.tree[0].true_data + Build.tree[0].false_data
+    new_data = Data.secound() + Build.tree[0].true_data + Build.tree[0].false_data'''
 
-rebuild(new_data, Build.tree)'''
+

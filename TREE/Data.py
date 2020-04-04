@@ -30,6 +30,6 @@ def first_test():
 
 def secound():
     quantyty_training =1
-    first_data_training = data[1000:1500]
+    first_data_training = data[10:15]
     return first_data_training.values.tolist()
 
