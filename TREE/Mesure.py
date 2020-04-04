@@ -1,10 +1,6 @@
-
-
-
 def count(training_elements):
     count_data = {}
     for count in training_elements:
-        # ostatni element
         tmp = count[-1]
 
         if tmp not in count_data:

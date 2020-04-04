@@ -18,18 +18,26 @@ with open('bank.csv') as csvfile:
     data = pd.get_dummies(data=data, drop_first=True)'''
 
 
-
-def first_test():
-    quantyty_training = int(0.5*4520*0.8)
-    quantyty_training = 1000
-    first_data_training = data[:quantyty_training]
+def first_training():
+    quantyty_training = int(0.5 * 4520 * 0.8)
+    data_training = data[:quantyty_training]
     quantyty_test = int(0.5 * 4520 * 0.2)
-    quantyty_test = 2
-    first_data_test = data[quantyty_training:quantyty_test+quantyty_training]
-    return first_data_training.values.tolist(), first_data_test.values.tolist()
+    data_test = data[quantyty_training:quantyty_test + quantyty_training]
+    return data_training.values.tolist(), data_test.values.tolist()
 
-def secound():
-    quantyty_training =1
-    first_data_training = data[10:15]
-    return first_data_training.values.tolist()
 
+def secound_training():
+    quantyty_firs = int(0.5 * 4520)
+    quantyty_training = quantyty_firs + int(0.25 * 4520 * 0.8)
+    data_training = data[quantyty_firs:quantyty_training]
+    quantyty_test = int(0.25 * 4520 * 0.2)
+    data_test = data[quantyty_training:quantyty_test + quantyty_training]
+    return data_training.values.tolist(), data_test.values.tolist()
+
+def third_training():
+    quantyty_firs = int(0.75 * 4520)
+    quantyty_training = quantyty_firs + int(0.25 * 4520 * 0.8)
+    data_training = data[quantyty_firs:quantyty_training]
+    quantyty_test = int(0.25 * 4520 * 0.2)
+    data_test = data[quantyty_training:quantyty_test + quantyty_training]
+    return data_training.values.tolist(), data_test.tolist()

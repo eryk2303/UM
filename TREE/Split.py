@@ -1,5 +1,6 @@
 import Mesure
 
+
 def make_split(training_data):
     best_gain_value = 0
     best_question_split = None
@@ -39,7 +40,6 @@ def make_split(training_data):
 
 
 def check_split(training_data, question_split):
-
     true_data, false_data = [], []
 
     for data in training_data:
@@ -58,6 +58,5 @@ def check_split(training_data, question_split):
         gain = Mesure.gain(true_data, false_data, training_data)
     else:
         gain = 0
-
 
     return gain, question_split, true_data, false_data

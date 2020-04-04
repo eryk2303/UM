@@ -3,7 +3,6 @@ import Mesure
 import Data
 
 
-
 class Subtree_Values:
     def __init__(self, question, right_next, left_next, gain, true_data, false_data):
         self.question = question
@@ -13,9 +12,11 @@ class Subtree_Values:
         self.true_data = true_data
         self.false_data = false_data
 
+
 class Quantity:
     def __init__(self, data):
         self.quantity = Mesure.count(data)
+
 
 def build_tree(training_data):
     gain, question, true_data, false_data = Split.make_split(training_data)
@@ -28,6 +29,7 @@ def build_tree(training_data):
 
     return Subtree_Values(question, right_next, left_next, gain, true_data, false_data), Quantity(training_data)
 
-training_data, test_data = Data.first_test()
+
+training_data, test_data = Data.first_training()
 
 tree = build_tree(training_data)
