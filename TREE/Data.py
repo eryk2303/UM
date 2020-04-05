@@ -6,7 +6,7 @@ from sklearn.preprocessing import scale
 
 ##upload data
 with open('bank.csv') as csvfile:
-    readCSV = csv.DictReader(csvfile, delimiter=',')
+    readCSV = csv.DictReader(csvfile, delimiter=';')
     data = pd.DataFrame(list(readCSV))
     tmp = data['y']
     del data['y']
