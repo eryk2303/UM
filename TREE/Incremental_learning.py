@@ -10,7 +10,7 @@ import Data
 def find_tree(tree, data):
     if tree is not None:
         if tree[0].true_data and tree[0].false_data is not None:
-            if Mesure.count(data) == Mesure.count(tree[0].true_data + tree[0].false_data):
+            if data == tree[0].true_data + tree[0].false_data:
                 return tree
             else:
                 if tree[0].right_next is not None:

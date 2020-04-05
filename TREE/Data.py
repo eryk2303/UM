@@ -8,8 +8,8 @@ from sklearn.preprocessing import scale
 with open('bank.csv') as csvfile:
     readCSV = csv.DictReader(csvfile, delimiter=',')
     data = pd.DataFrame(list(readCSV))
-    tmp = data['education']
-    del data['education']
+    tmp = data['y']
+    del data['y']
     data['balance'] = scale(data['balance'])
     data['duration'] = scale(data['duration'])
     data['pdays'] = scale(data['pdays'])
@@ -18,7 +18,7 @@ with open('bank.csv') as csvfile:
     data['day'] = scale(data['day'])
     data['age'] = scale(data['age'])
     data = pd.get_dummies(data=data, drop_first=True)
-    data['education'] = tmp
+    data['y'] = tmp
 
 
 ##data for first trainnig 
