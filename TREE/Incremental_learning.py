@@ -30,7 +30,6 @@ def incremental_learning(data, tree):
                     return Build.Subtree_Values(question, tree[0].right_next, tree[0].left_next, gain, true_data,
                                                 false_data), Build.Quantity(data)
 
-
             gain_old, question_old, true_data_old, false_data_old = Split.check_split(data, tree[0].question)
 
             if gain - gain_old > 0.1 or gain_old is 0:
@@ -96,5 +95,3 @@ def incremental_learning(data, tree):
         right_next = incremental_learning(true_data, None)
         left_next = incremental_learning(false_data, None)
         return Build.Subtree_Values(question, right_next, left_next, gain, true_data, false_data), Build.Quantity(data)
-
-

@@ -8,11 +8,14 @@ def first_test():
     tree = Build.build_tree(data_training)
     test(tree, data_test)
 
+
 def secound_test():
     data_training_old, data_test_old = Data.first_training()
     data_training, data_test = Data.secound_training()
-    test(Incremental_learning.incremental_learning(data_training+data_training_old, Build.build_tree(data_training_old))
+    test(Incremental_learning.incremental_learning(data_training + data_training_old,
+                                                   Build.build_tree(data_training_old))
          , data_test)
+
 
 def test(tree, data_test):
     good = 0
