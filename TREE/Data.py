@@ -4,6 +4,7 @@ import pandas as pd
 import sklearn
 from sklearn.preprocessing import scale
 
+##upload data
 with open('bank.csv') as csvfile:
     readCSV = csv.DictReader(csvfile, delimiter=',')
     data = pd.DataFrame(list(readCSV))
@@ -20,6 +21,9 @@ with open('bank.csv') as csvfile:
     data['education'] = tmp
 
 
+##data for first trainnig 
+# @return data_training data to training
+# @return data_test data to test
 def first_training():
     quantyty_training = int(0.5 * 4520 * 0.8)
     #quantyty_training = 100
@@ -30,6 +34,9 @@ def first_training():
     return data_training.values.tolist(), data_test.values.tolist()
 
 
+##data for secound trainnig 
+# @return data_training data to training
+# @return data_test data to test
 def secound_training():
     quantyty_firs = int(0.5 * 4520)
     quantyty_training = quantyty_firs + int(0.25 * 4520 * 0.8)
@@ -38,6 +45,10 @@ def secound_training():
     data_test = data[quantyty_training:quantyty_test + quantyty_training]
     return data_training.values.tolist(), data_test.values.tolist()
 
+
+##data for third trainnig 
+# @return data_training data to training
+# @return data_test data to test
 def third_training():
     quantyty_firs = int(0.75 * 4520)
     quantyty_training = quantyty_firs + int(0.25 * 4520 * 0.8)

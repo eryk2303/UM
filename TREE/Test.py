@@ -3,12 +3,14 @@ import Build
 import Data
 
 
+##function to do first test 
 def first_test():
     data_training, data_test = Data.first_training()
     tree = Build.build_tree(data_training)
     test(tree, data_test)
 
 
+##function to do secound test - secount tree
 def secound_test():
     data_training_old, data_test_old = Data.first_training()
     data_training, data_test = Data.secound_training()
@@ -17,6 +19,9 @@ def secound_test():
          , data_test)
 
 
+##function for calculating test data matching
+# @param tree
+# @param data test
 def test(tree, data_test):
     good = 0
     bad = 0
@@ -32,6 +37,11 @@ def test(tree, data_test):
     print(arrange)
 
 
+##find the list for test data
+# @param tree
+# @param dt element for which we are looking for a place
+# @param place leaf for element df
+# @return place leaf for element df
 def find(tree, dt, place):
     if tree[0].question is not None:
         if isinstance(tree[0].question[1], int) or isinstance(tree[0].question[1], float):

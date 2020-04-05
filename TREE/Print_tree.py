@@ -2,7 +2,9 @@ import Incremental_learning
 import Build
 import Data
 
-
+##function to print tree
+# @param element tree
+# @param space
 def print_tree(element, space=""):
     print(space, element[1].quantity)
 
