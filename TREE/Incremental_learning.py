@@ -4,6 +4,9 @@ import Mesure
 import Data
 
 
+##function to find the same tree in old tree
+# @param tree - old tree
+# @param data current data
 def find_tree(tree, data):
     if tree is not None:
         if tree[0].true_data and tree[0].false_data is not None:
@@ -18,6 +21,9 @@ def find_tree(tree, data):
                     return 0
 
 
+##function for incremental learning
+# @param tree - old tree
+# @param data current data
 def incremental_learning(data, tree):
     gain, question, true_data, false_data = Split.make_split(data)
     if tree is not None:
