@@ -26,7 +26,7 @@ with open('bank.csv') as csvfile:
 # @return data_test data to test
 def first_training():
     quantyty_training = int(0.5 * 4520 * 0.8)
-    #quantyty_training = 100
+   # quantyty_training = 100
     data_training = data[:quantyty_training]
     quantyty_test = int(0.5 * 4520 * 0.2)
     #quantyty_test = 10
@@ -55,4 +55,6 @@ def third_training():
     data_training = data[quantyty_firs:quantyty_training]
     quantyty_test = int(0.25 * 4520 * 0.2)
     data_test = data[quantyty_training:quantyty_test + quantyty_training]
-    return data_training.values.tolist(), data_test.tolist()
+    return data_training.values.tolist(), data_test.values.tolist()
+
+

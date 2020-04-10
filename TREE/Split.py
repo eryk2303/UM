@@ -38,6 +38,7 @@ def make_split(training_data):
             if len(true_data) == 0 or len(false_data) == 0:
                 continue
             gain = Mesure.gain(true_data, false_data, training_data)
+
             ##save the best data
             if gain >= best_gain_value:
                 best_gain_value = gain

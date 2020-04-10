@@ -8,16 +8,24 @@ def first_test():
     data_training, data_test = Data.first_training()
     tree = Build.build_tree(data_training)
     test(tree, data_test)
-
+    return tree
 
 ##function to do secound test - secount tree
 def secound_test():
     data_training_old, data_test_old = Data.first_training()
     data_training, data_test = Data.secound_training()
-    test(Incremental_learning.incremental_learning(data_training + data_training_old,
-                                                   Build.build_tree(data_training_old))
-         , data_test)
+    tree = Incremental_learning.incremental_learning(data_training + data_training_old,
+                                                   first_test())
+    test(tree, data_test)
+    return tree
 
+def third_test():
+    data_training_old, data_test_old = Data.first_training()
+    data_training_old2, data_test_old2 = Data.secound_training()
+    data_training, data_test = Data.third_training()
+    tree = Incremental_learning.incremental_learning(data_training + data_training_old + data_training_old2,
+                                                     secound_test())
+    test(tree, data_test)
 
 ##function for calculating test data matching
 # @param tree
@@ -73,5 +81,4 @@ def find(tree, dt, place):
     else:
         return place
 
-
-secound_test()
+third_test()
