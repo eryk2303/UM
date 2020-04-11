@@ -1,7 +1,5 @@
 import Split
 import Build
-import Mesure
-import Data
 
 
 ##function to find the same tree in old tree
@@ -10,12 +8,13 @@ import Data
 def find_tree(tree, data):
     if tree is not None:
         if tree[0].true_data and tree[0].false_data is not None:
-            difference_tree = [item for item in data if item not in tree[0].true_data + tree[0].false_data]
             difference_data = [item for item in tree[0].true_data + tree[0].false_data if item not in data]
+            if len(difference_data) != 0:
+                return None
+
+            difference_tree = [item for item in data if item not in tree[0].true_data + tree[0].false_data]
             if len(difference_tree) == 0 and len(difference_data) == 0:
                 return tree
-            elif len(difference_data) != 0:
-                return None
             else:
                 if tree[0].right_next is not None:
                     return find_tree(tree[0].right_next, data)
@@ -51,10 +50,8 @@ def incremental_learning(data, tree):
                 if gain - gain_old > 0.1 or gain_old <= 0:
                     if gain == 0:
                         return Build.Subtree_Values(None, None, None, gain, None, None), Build.Quantity(data)
-
                     right_next = incremental_learning(true_data, tree)
                     left_next = incremental_learning(false_data, tree)
-
                     return Build.Subtree_Values(question, right_next, left_next, gain, true_data,
                                                     false_data), Build.Quantity(data)
 

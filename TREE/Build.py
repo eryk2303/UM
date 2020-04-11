@@ -1,6 +1,5 @@
 import Split
 import Mesure
-import Data
 
 
 ##class with elemnet to save in all knots
@@ -28,7 +27,7 @@ class Quantity:
         self.quantity = Mesure.count(data)
 
 
-##function to count all elements 
+##function to count all elements
 # @param training_elements list in which items will be counted
 # @return quantity of elements all elements
 def count_all(training_data):

@@ -1,8 +1,9 @@
 import csv
-import numpy as np
 import pandas as pd
-import sklearn
 from sklearn.preprocessing import scale
+
+test_len = 0.2
+training_len = 0.8
 
 ##upload data
 with open('bank.csv') as csvfile:
@@ -19,42 +20,34 @@ with open('bank.csv') as csvfile:
     data['age'] = scale(data['age'])
     data = pd.get_dummies(data=data, drop_first=True)
     data['y'] = tmp
+    data_len = len(data) - 1
+    data_test = (data[0:int(data_len * test_len)]).values.tolist()
+    data_test_len = len(data_test)
+    data_len -= data_test_len
 
 
-##data for first trainnig 
+def first_training(quantity):
+    quantyty_training = int(quantity * data_len) + data_test_len
+    data_training = data[data_test_len:quantyty_training]
+    return data_training.values.tolist()
+
+
+##data for secound trainnig
 # @return data_training data to training
 # @return data_test data to test
-def first_training():
-    quantyty_training = int(0.5 * 4520 * 0.8)
-   # quantyty_training = 100
-    data_training = data[:quantyty_training]
-    quantyty_test = int(0.5 * 4520 * 0.2)
-    #quantyty_test = 10
-    data_test = data[quantyty_training:quantyty_test + quantyty_training]
-    return data_training.values.tolist(), data_test.values.tolist()
+def secound_training(quantity, quantity_previous):
+    quantyty_first = int(quantity_previous * data_len) + data_test_len
+    quantyty_training = quantyty_first + int(quantity * data_len * training_len) + data_test_len
+    data_training = data[quantyty_first:quantyty_training]
+    return data_training.values.tolist()
 
 
-##data for secound trainnig 
+##data for third trainnig
 # @return data_training data to training
 # @return data_test data to test
-def secound_training():
-    quantyty_firs = int(0.5 * 4520)
-    quantyty_training = quantyty_firs + int(0.25 * 4520 * 0.8)
-    data_training = data[quantyty_firs:quantyty_training]
-    quantyty_test = int(0.25 * 4520 * 0.2)
-    data_test = data[quantyty_training:quantyty_test + quantyty_training]
-    return data_training.values.tolist(), data_test.values.tolist()
-
-
-##data for third trainnig 
-# @return data_training data to training
-# @return data_test data to test
-def third_training():
-    quantyty_firs = int(0.75 * 4520)
-    quantyty_training = quantyty_firs + int(0.25 * 4520 * 0.8)
-    data_training = data[quantyty_firs:quantyty_training]
-    quantyty_test = int(0.25 * 4520 * 0.2)
-    data_test = data[quantyty_training:quantyty_test + quantyty_training]
-    return data_training.values.tolist(), data_test.values.tolist()
-
+def third_training(quantity, quantity_previous):
+    quantyty_first = int(quantity_previous * data_len) + data_test_len
+    quantyty_training = quantyty_first + int(quantity * data_len * training_len) + data_test_len
+    data_training = data[quantyty_first:quantyty_training]
+    return data_training.values.tolist()
 

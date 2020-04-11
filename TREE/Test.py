@@ -1,30 +1,32 @@
 import Incremental_learning
-import Build
 import Data
+import Build
 
-
-##function to do first test 
-def first_test():
-    data_training, data_test = Data.first_training()
+##function to do first test
+def first_test(quantity):
+    data_test = Data.data_test
+    data_training = Data.first_training(quantity)
     tree = Build.build_tree(data_training)
     test(tree, data_test)
     return tree
 
 ##function to do secound test - secount tree
-def secound_test():
-    data_training_old, data_test_old = Data.first_training()
-    data_training, data_test = Data.secound_training()
+def secound_test(quantity, quantity_previous):
+    data_test = Data.data_test
+    data_training_old = Data.first_training(quantity_previous)
+    data_training = Data.secound_training(quantity, quantity_previous)
     tree = Incremental_learning.incremental_learning(data_training + data_training_old,
-                                                   first_test())
+                                                   first_test(quantity))
     test(tree, data_test)
     return tree
 
-def third_test():
-    data_training_old, data_test_old = Data.first_training()
-    data_training_old2, data_test_old2 = Data.secound_training()
-    data_training, data_test = Data.third_training()
+def third_test(quantity, quantity_previous, quantity_old):
+    data_test = Data.data_test
+    data_training_old = Data.first_training(quantity_old)
+    data_training_old2 = Data.secound_training(quantity_previous, quantity_old)
+    data_training = Data.third_training(quantity, quantity_previous + quantity_old)
     tree = Incremental_learning.incremental_learning(data_training + data_training_old + data_training_old2,
-                                                     secound_test())
+                                                     secound_test(quantity, quantity_previous))
     test(tree, data_test)
 
 ##function for calculating test data matching
@@ -42,7 +44,7 @@ def test(tree, data_test):
                 bad += place[p]
 
     arrange = good / (good + bad)
-    print(arrange)
+    print("Dopasowanie: ", arrange)
 
 
 ##find the list for test data
@@ -81,4 +83,13 @@ def find(tree, dt, place):
     else:
         return place
 
-third_test()
+def main():
+    print("first data")
+    third_test(0.5, 0.25, 0.25)
+    print("secound data")
+    third_test(0.25, 0.25, 0.50)
+    print("third data")
+    third_test(0.05, 0.85, 0.1)
+
+main()
+import Build
