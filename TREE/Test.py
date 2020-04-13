@@ -28,6 +28,7 @@ def third_test(quantity, quantity_previous, quantity_old):
     tree = Incremental_learning.incremental_learning(data_training + data_training_old + data_training_old2,
                                                      secound_test(quantity, quantity_previous), Build.count_all(data_training + data_training_old + data_training_old2))
     test(tree, data_test)
+    return tree
 
 ##function for calculating test data matching
 # @param tree
@@ -83,12 +84,3 @@ def find(tree, dt, place):
     else:
         return place
 
-def main():
-    print("first data")
-    third_test(0.5, 0.25, 0.25)
-    print("secound data")
-    third_test(0.25, 0.25, 0.50)
-    print("third data")
-    third_test(0.05, 0.85, 0.1)
-
-main()
