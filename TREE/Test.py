@@ -6,7 +6,7 @@ import Build
 def first_test(quantity):
     data_test = Data.data_test
     data_training = Data.first_training(quantity)
-    tree = Build.build_tree(data_training)
+    tree = Build.build_tree(data_training, Build.count_all(data_training))
     test(tree, data_test)
     return tree
 
@@ -16,7 +16,7 @@ def secound_test(quantity, quantity_previous):
     data_training_old = Data.first_training(quantity_previous)
     data_training = Data.secound_training(quantity, quantity_previous)
     tree = Incremental_learning.incremental_learning(data_training + data_training_old,
-                                                   first_test(quantity))
+                                                   first_test(quantity),  Build.count_all(data_training + data_training_old))
     test(tree, data_test)
     return tree
 
@@ -26,7 +26,7 @@ def third_test(quantity, quantity_previous, quantity_old):
     data_training_old2 = Data.secound_training(quantity_previous, quantity_old)
     data_training = Data.third_training(quantity, quantity_previous + quantity_old)
     tree = Incremental_learning.incremental_learning(data_training + data_training_old + data_training_old2,
-                                                     secound_test(quantity, quantity_previous))
+                                                     secound_test(quantity, quantity_previous), Build.count_all(data_training + data_training_old + data_training_old2))
     test(tree, data_test)
 
 ##function for calculating test data matching
@@ -92,4 +92,3 @@ def main():
     third_test(0.05, 0.85, 0.1)
 
 main()
-import Build

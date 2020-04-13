@@ -42,14 +42,14 @@ def count_all(training_data):
 # @param training_elements list of training elements
 # @return object Subtree_Values for knot
 # @return object Quantity for knot
-def build_tree(training_data):
+def build_tree(training_data, quantity):
     gain, question, true_data, false_data = Split.make_split(training_data)
     ##when it is impossible to divide, return the leaf
-    if gain == 0:
+    if gain == 0 or count_all(training_data) <= quantity*(1/500):
         return Subtree_Values(None, None, None, gain, None, None), Quantity(training_data)
 
-    right_next = build_tree(true_data)
-    left_next = build_tree(false_data)
+    right_next = build_tree(true_data, quantity)
+    left_next = build_tree(false_data, quantity)
 
     return Subtree_Values(question, right_next, left_next, gain, true_data, false_data), Quantity(training_data)
 
