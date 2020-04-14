@@ -1,3 +1,5 @@
+__author__ = '{Eryk Wawrzyn}'
+
 import Incremental_learning
 import Data
 import Build

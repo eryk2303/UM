@@ -1,3 +1,6 @@
+
+__author__ = '{Eryk Wawrzyn}'
+
 import Correctness_of_building
 import Print_tree
 import Data_matching

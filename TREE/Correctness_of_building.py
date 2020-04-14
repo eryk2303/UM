@@ -1,3 +1,5 @@
+__author__ = '{Eryk Wawrzyn}'
+
 import Data
 import Build
 import Print_tree

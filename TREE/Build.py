@@ -1,3 +1,5 @@
+__author__ = '{Eryk Wawrzyn}'
+
 import Split
 import Mesure
 

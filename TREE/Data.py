@@ -1,3 +1,5 @@
+__author__ = '{Eryk Wawrzyn}'
+
 import csv
 import pandas as pd
 from sklearn.preprocessing import scale

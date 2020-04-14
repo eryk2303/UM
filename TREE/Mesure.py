@@ -1,3 +1,6 @@
+__author__ = '{Eryk Wawrzyn}'
+
+
 ##function to count elements in all category (primary, secondary, ...)
 # @param training_elements list in which items will be counted
 # @return count_data dictionary with quantity of elements in all category
