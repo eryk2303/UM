@@ -4,7 +4,8 @@ from sklearn.preprocessing import scale
 
 
 
-##upload data
+##function to read and optimization data y
+# @return data 
 def read_data():
     with open('bank.csv') as csvfile:
         readCSV = csv.DictReader(csvfile, delimiter=';')
@@ -22,6 +23,10 @@ def read_data():
         data['y'] = tmp
     return data
 
+
+
+##function to read data y
+# @return data 
 def read_data_without_scale():
     with open('bank.csv') as csvfile:
         readCSV = csv.DictReader(csvfile, delimiter=';')
@@ -32,6 +37,9 @@ def read_data_without_scale():
     return data
 
 
+
+##function to read and optimization data education
+# @return data 
 def read_data_second():
     with open('bank.csv') as csvfile:
         readCSV = csv.DictReader(csvfile, delimiter=';')

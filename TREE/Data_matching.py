@@ -2,6 +2,9 @@ import Incremental_learning
 import Data
 import Build
 
+
+##function to do test for basic tree
+## @param quantity - quantity of data used to tarin dree
 def data_matching_for_basic_tree(quantity):
     print("Drzewo dla danych określających czy ktoś otrzyma pożyczkę")
     data = Data.read_data()
@@ -21,6 +24,9 @@ def data_matching_for_basic_tree(quantity):
     data_matching(tree, data_test)
 
 
+
+##function to do test for basic tree for data without scale
+## @param quantity - quantity of data used to tarin tree
 def data_matching_for_basic_tree_data_without_scale(quantity):
     print("Drzewo dla danych określających czy ktoś otrzyma pożyczkę")
     data = Data.read_data_without_scale()
@@ -32,7 +38,9 @@ def data_matching_for_basic_tree_data_without_scale(quantity):
     data_matching(tree, data_test)
 
 
-
+##function to do test for tree with one incremental learning 
+## @param quantity_basic_tree - quantity of data used to tarin basic tree
+# @param quantity - quantity of data used to incremental learning 
 def data_matching_for_tree_incremental_learning(quantity_basic_tree, quantity):
     print("Drzewo dla danych określających czy ktoś otrzyma pożyczkę")
     data = Data.read_data()
@@ -56,6 +64,11 @@ def data_matching_for_tree_incremental_learning(quantity_basic_tree, quantity):
     data_matching(tree, data_test)
 
 
+
+##function to do test for tree with two incremental learning 
+## @param quantity_basic_tree - quantity of data used to tarin basic tree
+# @param quantity_1 - quantity of data used to incremental learning 
+# @param quantity_2 - quantity of data used to second incremental learning 
 def data_matching_for_tree_incremental_learning_2(quantity_basic_tree, quantity_1, quantity_2):
     print("Drzewo dla danych określających czy ktoś otrzyma pożyczkę")
     data = Data.read_data()
