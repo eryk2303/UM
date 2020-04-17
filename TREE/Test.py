@@ -33,22 +33,22 @@ def test():
             print("podstawowe drzewo")
             i = 0
             
-            while i <= 0.95:
+            '''while i <= 0.95:
                 i += 0.05
                 print(i, "ze zbioru - zbiór testowy (0.2 całego zbioru)")
                 arrange = Data_matching.data_matching_for_basic_tree(i)
-                read_file('test_basic.txt', arrange)
+                read_file('test_basic.txt', arrange)'''
 
             print("drzewo po douczaniu")
-            a = 0
+            a = 0.1
             while a <= 0.95:
                 a += 0.05
                 i = 0
-                while i is not 1:
+                while i <= 0.95:
                     i += 0.05
                     print(a, "ze zbioru - zbiór testowy (0.2 całego zbioru)")
                     print(i, ", ", 1 - i, "piersze trenowanie, douczanie")
-                    arrange = Data_matching.data_matching_for_tree_incremental_learning(i, 1 - 1)
+                    arrange = Data_matching.data_matching_for_tree_incremental_learning(a*i, (1 - i)*a)
                     read_file('test_incremental_%f.txt' %(a), arrange)
 
             
