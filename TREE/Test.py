@@ -4,6 +4,13 @@ __author__ = '{Eryk Wawrzyn}'
 import Correctness_of_building
 import Print_tree
 import Data_matching
+import csv
+
+def read_file(name, arrange):
+    with open(name, 'a') as test_file:           
+        test_file.writelines(str(arrange[:]))
+        test_file.writelines('\n')
+    test_file.close()
 
 
 ##test management function
@@ -20,37 +27,32 @@ def test():
             print("--------------------------------------------------")
             print("Uczenie przyrostowe powyższego drzewa dla danych od 60 do 80")
             Correctness_of_building.correctness_of_incremental(60, 20, tree)
+
+
         if x is '2':
             print("podstawowe drzewo")
-            print("całość danych")
-            Data_matching.data_matching_for_basic_tree(1)
-            print("0.75 danych")
-            Data_matching.data_matching_for_basic_tree(0.75)
-            print("0.5 danych")
-            Data_matching.data_matching_for_basic_tree(0.5)
-            print("0.25 danych")
-            Data_matching.data_matching_for_basic_tree(0.25)
-            print("dane bez unormowania")
-            Data_matching.data_matching_for_basic_tree_data_without_scale(1)
-            print("0.75 danych")
-            Data_matching.data_matching_for_basic_tree_data_without_scale(0.75)
-            print("0.5 danych")
-            Data_matching.data_matching_for_basic_tree_data_without_scale(0.5)
-            print("0.25 danych")
-            Data_matching.data_matching_for_basic_tree_data_without_scale(0.25)
+            i = 0
+            
+            '''while i is not 1:
+                i += 0.05
+                print(i, "ze zbioru - zbiór testowy (0.2 całego zbioru)")
+                arrange = Data_matching.data_matching_for_basic_tree(i)
+                read_file('test_basic.txt', arrange)'''
+
             print("drzewo po douczaniu")
-            print("0.5, 0.5 danych ")
-            Data_matching.data_matching_for_tree_incremental_learning(0.5, 0.5)
-            print("0.75, 0.25 danych ")
-            Data_matching.data_matching_for_tree_incremental_learning(0.75, 0.25)
-            print("0.25, 0.75 danych ")
-            Data_matching.data_matching_for_tree_incremental_learning(0.25, 0.75)
-            print("0.5, 0.25, 0.25 danych ")
-            Data_matching.data_matching_for_tree_incremental_learning_2(0.5, 0.25, 0.25)
-            print("0.25, 0.25, 0.5 danych ")
-            Data_matching.data_matching_for_tree_incremental_learning_2(0.25, 0.25, 0.5)
-            print("0.1, 0.85, 0.05 danych ")
-            Data_matching.data_matching_for_tree_incremental_learning_2(0.1, 0.85, 0.05)
+            a = 0
+            while a is not 1:
+                a += 0.05
+                i = 0
+                while i is not 1:
+                    i += 0.05
+                    print(a, "ze zbioru - zbiór testowy (0.2 całego zbioru)")
+                    print(i, ", ", 1 - i, "piersze trenowanie, douczanie")
+                    arrange = Data_matching.data_matching_for_tree_incremental_learning(i, 1 - 1)
+                    read_file('test_incremental_%f.txt' %(a), arrange)
+
+            
         else:
             continue
 test()
+
