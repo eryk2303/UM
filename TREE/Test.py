@@ -25,19 +25,19 @@ def write_time(name, time):
 # @return arrange - basic tree arrange
 def data_matching_for_basic_tree(quantity):
     arrange = []
-    print("Drzewo dla danych określających czy ktoś otrzyma pożyczkę")
+    print("Drzewo dla zbioru bank")
     data = Data.read_data()
     start = datetime.datetime.now()
     arrange.append(Data_matching.for_basic_tree(quantity, data))
     end = datetime.datetime.now()
     write_time('bank_time_basic.txt', str(end - start))
-    print("Drzewo dla danych określających jaki to grzyb")
+    print("Drzewo dla zbioru agaricus_incremental")
     data = Data.read_data_second()
     start = datetime.datetime.now()
     arrange.append(Data_matching.for_basic_tree(quantity, data))
     end = datetime.datetime.now()
     write_time('grzyby_time_basic.txt', str(end - start))
-    print("Drzewo dla danych określających gdzie ktoś pracuje")
+    print("Drzewo dla zbioru student")
     data = Data.read_data_third()
     start = datetime.datetime.now()
     arrange.append(Data_matching.for_basic_tree(quantity, data))
@@ -53,19 +53,19 @@ def data_matching_for_basic_tree(quantity):
 # @return arrange - arrange for incremental learning
 def data_matching_for_tree_incremental_learning(quantity_basic_tree, quantity, quantity_of_all):
     arrange = []
-    print("Drzewo dla danych określających czy ktoś otrzyma pożyczkę")
+    print("Drzewo dla zbioru bank")
     data = Data.read_data()
     start = datetime.datetime.now()
     arrange.append(Data_matching.for_tree_incremental_learning(quantity_basic_tree, quantity, data))
     end = datetime.datetime.now()
     write_time('bank_time_incremental_%f.txt' %(quantity_of_all), str(end - start))
-    print("Drzewo dla danych określających jaki to grzyb")
+    print("Drzewo dla zbioru agaricus_incremental")
     data = Data.read_data_second()
     start = datetime.datetime.now()
     arrange.append(Data_matching.for_tree_incremental_learning(quantity_basic_tree, quantity, data))
     end = datetime.datetime.now()
     write_time('grzyby_time_incremental_%f.txt' %(quantity_of_all), str(end - start))
-    print("Drzewo dla danych określających gdzie ktoś pracuje")
+    print("Drzewo dla zbioru student")
     data = Data.read_data_third()
     start = datetime.datetime.now()
     arrange.append(Data_matching.for_tree_incremental_learning(quantity_basic_tree, quantity, data))
@@ -95,15 +95,14 @@ def test():
             print("podstawowe drzewo")
             i = 0
             
-            '''while i <= 0.95:
+            while i <= 0.95:
                 i += 0.05
                 print(i, "ze zbioru - zbiór testowy (0.2 całego zbioru)")
                 arrange = data_matching_for_basic_tree(i)
                 write_file('test_basic.txt', arrange)
-                '''
+                
             print("drzewo po douczaniu")
             a = 0.1
-            a = 0.7
             while a <= 0.95:
                 a += 0.05
                 i = 0
