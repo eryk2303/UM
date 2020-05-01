@@ -1,0 +1,1 @@
+Drzewo decyzyjne, które potrafi zmieniaæ siê wskutek nadchodzenia nowych danych trenuj¹cych (uczenie przyrostowe).
