@@ -5,12 +5,74 @@ import Correctness_of_building
 import Print_tree
 import Data_matching
 import csv
+import datetime
+import Data
 
-def read_file(name, arrange):
+def write_file(name, arrange):
     with open(name, 'a') as test_file:           
         test_file.writelines(str(arrange[:]))
         test_file.writelines('\n')
     test_file.close()
+
+def write_time(name, time):
+    with open(name, 'a') as test_file:           
+        test_file.writelines(time)
+        test_file.writelines('\n')
+    test_file.close()
+
+##function for sending tests
+# @param quantity - quantity of data used to tarin dree
+# @return arrange - basic tree arrange
+def data_matching_for_basic_tree(quantity):
+    arrange = []
+    print("Drzewo dla danych określających czy ktoś otrzyma pożyczkę")
+    data = Data.read_data()
+    start = datetime.datetime.now()
+    arrange.append(Data_matching.for_basic_tree(quantity, data))
+    end = datetime.datetime.now()
+    write_time('bank_time_basic.txt', str(end - start))
+    print("Drzewo dla danych określających jaki to grzyb")
+    data = Data.read_data_second()
+    start = datetime.datetime.now()
+    arrange.append(Data_matching.for_basic_tree(quantity, data))
+    end = datetime.datetime.now()
+    write_time('grzyby_time_basic.txt', str(end - start))
+    print("Drzewo dla danych określających gdzie ktoś pracuje")
+    data = Data.read_data_third()
+    start = datetime.datetime.now()
+    arrange.append(Data_matching.for_basic_tree(quantity, data))
+    end = datetime.datetime.now()
+    write_time('student_time_basic.txt', str(end - start))
+    return arrange
+
+
+
+##function for sending tests
+## @param quantity_basic_tree - quantity of data used to tarin basic tree
+# @param quantity - quantity of data used to incremental learning 
+# @return arrange - arrange for incremental learning
+def data_matching_for_tree_incremental_learning(quantity_basic_tree, quantity, quantity_of_all):
+    arrange = []
+    print("Drzewo dla danych określających czy ktoś otrzyma pożyczkę")
+    data = Data.read_data()
+    start = datetime.datetime.now()
+    arrange.append(Data_matching.for_tree_incremental_learning(quantity_basic_tree, quantity, data))
+    end = datetime.datetime.now()
+    write_time('bank_time_incremental_%f.txt' %(quantity_of_all), str(end - start))
+    print("Drzewo dla danych określających jaki to grzyb")
+    data = Data.read_data_second()
+    start = datetime.datetime.now()
+    arrange.append(Data_matching.for_tree_incremental_learning(quantity_basic_tree, quantity, data))
+    end = datetime.datetime.now()
+    write_time('grzyby_time_incremental_%f.txt' %(quantity_of_all), str(end - start))
+    print("Drzewo dla danych określających gdzie ktoś pracuje")
+    data = Data.read_data_third()
+    start = datetime.datetime.now()
+    arrange.append(Data_matching.for_tree_incremental_learning(quantity_basic_tree, quantity, data))
+    end = datetime.datetime.now()
+    write_time('student_time_incremental_%f.txt' %(quantity_of_all), str(end - start))
+    return arrange
+
 
 
 ##test management function
@@ -36,11 +98,12 @@ def test():
             '''while i <= 0.95:
                 i += 0.05
                 print(i, "ze zbioru - zbiór testowy (0.2 całego zbioru)")
-                arrange = Data_matching.data_matching_for_basic_tree(i)
-                read_file('test_basic.txt', arrange)'''
-
+                arrange = data_matching_for_basic_tree(i)
+                write_file('test_basic.txt', arrange)
+                '''
             print("drzewo po douczaniu")
             a = 0.1
+            a = 0.7
             while a <= 0.95:
                 a += 0.05
                 i = 0
@@ -48,9 +111,9 @@ def test():
                     i += 0.05
                     print(a, "ze zbioru - zbiór testowy (0.2 całego zbioru)")
                     print(i, ", ", 1 - i, "piersze trenowanie, douczanie")
-                    arrange = Data_matching.data_matching_for_tree_incremental_learning(a*i, (1 - i)*a)
-                    read_file('test_incremental_%f.txt' %(a), arrange)
-
+                    arrange = data_matching_for_tree_incremental_learning(a*i, (1 - i)*a, a)
+                    write_file('test_incremental_%f.txt' %(a), arrange)
+                    
             
         else:
             continue

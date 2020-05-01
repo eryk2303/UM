@@ -5,22 +5,11 @@ import Data
 import Build
 import Print_tree
 
+
+
 ##function to do test for basic tree
-## @param quantity - quantity of data used to tarin dree
-def data_matching_for_basic_tree(quantity):
-    arrange = []
-    print("Drzewo dla danych określających czy ktoś otrzyma pożyczkę")
-    data = Data.read_data()
-    arrange.append(for_basic_tree(quantity, data))
-    print("Drzewo dla danych określających jaki to grzyb")
-    data = Data.read_data_second()
-    arrange.append(for_basic_tree(quantity, data))
-    print("Drzewo dla danych określających gdzie ktoś pracuje")
-    data = Data.read_data_third()
-    arrange.append(for_basic_tree(quantity, data))
-    return arrange
-
-
+# @param quantity - quantity of data used to tarin dree
+# @return arrange - basic tree arrange
 def for_basic_tree(quantity, data):
     len_data_test = int(0.2*len(data))
     data_test = data[0:len_data_test].values.tolist()
@@ -31,23 +20,11 @@ def for_basic_tree(quantity, data):
     return arrange
 
 
+
 ##function to do test for tree with one incremental learning 
 ## @param quantity_basic_tree - quantity of data used to tarin basic tree
 # @param quantity - quantity of data used to incremental learning 
-def data_matching_for_tree_incremental_learning(quantity_basic_tree, quantity):
-    arrange = []
-    print("Drzewo dla danych określających czy ktoś otrzyma pożyczkę")
-    data = Data.read_data()
-    arrange.append(for_tree_incremental_learning(quantity_basic_tree, quantity, data))
-    print("Drzewo dla danych określających jaki to grzyb")
-    data = Data.read_data_second()
-    arrange.append(for_tree_incremental_learning(quantity_basic_tree, quantity, data))
-    print("Drzewo dla danych określających gdzie ktoś pracuje")
-    data = Data.read_data_third()
-    arrange.append(for_tree_incremental_learning(quantity_basic_tree, quantity, data))
-    return arrange
-
-
+# @return arrange - arrange for incremental learning
 def for_tree_incremental_learning(quantity_basic_tree, quantity, data):
     len_data_test = int(0.2*len(data))
     data_test = data[0:len_data_test].values.tolist()

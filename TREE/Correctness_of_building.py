@@ -7,7 +7,7 @@ import Incremental_learning
 
 ##function to build and print tree
 # @param start - the data number in the csv file used to train the tree
-# @param start - quantity of data used to train the tree
+# @param quantity - quantity of data used to train the tree
 def correctness_of_building(start, quantity):
     data = Data.read_data()
     data = data[start:quantity+start]
@@ -19,7 +19,7 @@ def correctness_of_building(start, quantity):
 
 ##function to incremental learning and print tree
 # @param start - the data number in the csv file used to train the tree
-# @param start - quantity of data used to train the tree
+# @param quantity - quantity of data used to train the tree
 # @param tree - old tree
 def correctness_of_incremental(start, quantity, tree):
     data = Data.read_data()

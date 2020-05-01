@@ -27,7 +27,7 @@ def read_data():
 
 
 
-##function to read and optimization data education
+##function to read and optimization data agaricus-lepiota
 # @return data 
 def read_data_second():
     with open('agaricus-lepiota.data') as input_file:
@@ -41,6 +41,8 @@ def read_data_second():
     return data
 
 
+##function to read and optimization data student-mat
+# @return data 
 def read_data_third():
     with open('student-mat.csv') as csvfile:
         readCSV = csv.DictReader(csvfile, delimiter=';')
