@@ -7,6 +7,8 @@ import Data_matching
 import csv
 import datetime
 import Data
+import _pickle as pickle
+
 
 def write_file(name, arrange):
     with open(name, 'a') as test_file:           
@@ -20,6 +22,11 @@ def write_time(name, time):
         test_file.writelines('\n')
     test_file.close()
 
+def write_dict(matrix, name):
+    with open(name, 'a') as file:
+     file.write(str(matrix))
+     file.writelines('\n')
+
 ##function for sending tests
 # @param quantity - quantity of data used to tarin dree
 # @return arrange - basic tree arrange
@@ -28,21 +35,30 @@ def data_matching_for_basic_tree(quantity):
     print("Drzewo dla zbioru bank")
     data = Data.read_data()
     start = datetime.datetime.now()
-    arrange.append(Data_matching.for_basic_tree(quantity, data))
+    arrange_tmp, matrix = Data_matching.for_basic_tree(quantity, data)
+    arrange.append(arrange_tmp)
     end = datetime.datetime.now()
+    if quantity >= 0.95:
+        write_dict(matrix, 'confusion_matrix_for_basic_tree_bank.txt')
     write_time('bank_time_basic.txt', str(end - start))
     print("Drzewo dla zbioru agaricus_incremental")
     data = Data.read_data_second()
     start = datetime.datetime.now()
-    arrange.append(Data_matching.for_basic_tree(quantity, data))
+    arrange_tmp, matrix = Data_matching.for_basic_tree(quantity, data)
+    arrange.append(arrange_tmp)
     end = datetime.datetime.now()
+    if quantity >= 0.95:
+        write_dict(matrix, 'confusion_matrix_for_basic_tree_agaricus_incremental.txt')
     write_time('grzyby_time_basic.txt', str(end - start))
-    print("Drzewo dla zbioru student")
+    print("Drzewo dla zbioru iris")
     data = Data.read_data_third()
     start = datetime.datetime.now()
-    arrange.append(Data_matching.for_basic_tree(quantity, data))
+    arrange_tmp, matrix = Data_matching.for_basic_tree(quantity, data)
+    arrange.append(arrange_tmp)
     end = datetime.datetime.now()
-    write_time('student_time_basic.txt', str(end - start))
+    if quantity >= 0.95:
+        write_dict(matrix, 'confusion_matrix_for_basic_tree_iris.txt')
+    write_time('iris_time_basic.txt', str(end - start))
     return arrange
 
 
@@ -56,23 +72,29 @@ def data_matching_for_tree_incremental_learning(quantity_basic_tree, quantity, q
     print("Drzewo dla zbioru bank")
     data = Data.read_data()
     start = datetime.datetime.now()
-    arrange.append(Data_matching.for_tree_incremental_learning(quantity_basic_tree, quantity, data))
+    arrange_tmp, matrix = Data_matching.for_tree_incremental_learning(quantity_basic_tree, quantity, data)
+    arrange.append(arrange_tmp)
+    if quantity_of_all >= 0.95:
+        write_dict(matrix, 'confusion_matrix_for_incremental_bank.txt')
     end = datetime.datetime.now()
     write_time('bank_time_incremental_%f.txt' %(quantity_of_all), str(end - start))
     print("Drzewo dla zbioru agaricus_incremental")
     data = Data.read_data_second()
     start = datetime.datetime.now()
-    arrange.append(Data_matching.for_tree_incremental_learning(quantity_basic_tree, quantity, data))
-    end = datetime.datetime.now()
+    arrange_tmp, matrix = Data_matching.for_tree_incremental_learning(quantity_basic_tree, quantity, data)
+    arrange.append(arrange_tmp)
+    if quantity_of_all >= 0.95:
+        write_dict(matrix, 'confusion_matrix_for_incremental_agaricus_incremental.txt' )
     write_time('grzyby_time_incremental_%f.txt' %(quantity_of_all), str(end - start))
-    print("Drzewo dla zbioru student")
+    print("Drzewo dla zbioru iris")
     data = Data.read_data_third()
     start = datetime.datetime.now()
-    arrange.append(Data_matching.for_tree_incremental_learning(quantity_basic_tree, quantity, data))
-    end = datetime.datetime.now()
-    write_time('student_time_incremental_%f.txt' %(quantity_of_all), str(end - start))
+    arrange_tmp, matrix = Data_matching.for_tree_incremental_learning(quantity_basic_tree, quantity, data)
+    arrange.append(arrange_tmp)
+    if quantity_of_all >= 0.95:
+        write_dict(matrix, 'confusion_matrix_for_incremental_iris.txt' )
+    write_time('iris_time_incremental_%f.txt' %(quantity_of_all), str(end - start))
     return arrange
-
 
 
 ##test management function
@@ -112,8 +134,6 @@ def test():
                     print(i, ", ", 1 - i, "piersze trenowanie, douczanie")
                     arrange = data_matching_for_tree_incremental_learning(a*i, (1 - i)*a, a)
                     write_file('test_incremental_%f.txt' %(a), arrange)
-                    
-            
         else:
             continue
 test()

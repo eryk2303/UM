@@ -44,11 +44,12 @@ def read_data_second():
 ##function to read and optimization data student-mat
 # @return data 
 def read_data_third():
-    with open('student-mat.csv') as csvfile:
-        readCSV = csv.DictReader(csvfile, delimiter=';')
-        data = pd.DataFrame(list(readCSV))
-        tmp = data['Mjob']
-        del data['Mjob']
-        data['Mjob'] = tmp
+    with open('iris.data') as input_file:
+        lines = input_file.readlines()
+        newLines = []
+        for line in lines:
+            newLine = line.strip().split(',')
+            newLines.append( newLine )
+    data = pd.DataFrame(newLines)
     return data
 
