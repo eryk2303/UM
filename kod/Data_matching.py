@@ -9,6 +9,7 @@ import Print_tree
 ##function to do test for basic tree
 # @param quantity - quantity of data used to tarin dree
 # @return arrange - basic tree arrange
+# @return matrix - confusion matrix
 def for_basic_tree(quantity, data):
     len_data_test = int(0.2*len(data))
     data_test = data[0:len_data_test].values.tolist()
@@ -25,6 +26,7 @@ def for_basic_tree(quantity, data):
 ## @param quantity_basic_tree - quantity of data used to tarin basic tree
 # @param quantity - quantity of data used to incremental learning 
 # @return arrange - arrange for incremental learning
+# @return matrix - confusion matrix
 def for_tree_incremental_learning(quantity_basic_tree, quantity, data):
     len_data_test = int(0.2*len(data))
     data_test = data[0:len_data_test].values.tolist()
@@ -37,6 +39,10 @@ def for_tree_incremental_learning(quantity_basic_tree, quantity, data):
     matrix = confusion_matrix(data_test, tree)
     return arrange, matrix
 
+##function for creating confusion matrix
+# @param tree
+# @param data test
+# @return matrix - confusion matrix
 def confusion_matrix(data_test, tree):
     matrix = {}
     for dt in data_test:
@@ -76,7 +82,6 @@ def data_matching(tree, data_test):
 ##find the list for test data
 # @param tree
 # @param dt element for which we are looking for a place
-
 def find(tree, dt):
     if tree[0].question is not None:
         place = tree[1].quantity

@@ -41,7 +41,7 @@ def read_data_second():
     return data
 
 
-##function to read and optimization data student-mat
+##function to read and optimization data iris
 # @return data 
 def read_data_third():
     with open('iris.data') as input_file:
