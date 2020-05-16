@@ -11,7 +11,7 @@ def print_tree(element, space=""):
     print(space, element[1].quantity)
 
     if element[0].question is not None:
-        print(space, 'zapytanie', str(element[0].question[1]), ' z kolumny', str(element[0].question[0]))
+        print(space, 'test', str(element[0].question[1]), ' z kolumny', str(element[0].question[0]))
 
     if element[0].true_data is not None:
         print(space, 'True:')

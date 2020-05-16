@@ -39,10 +39,6 @@ def for_tree_incremental_learning(quantity_basic_tree, quantity, data):
     matrix = confusion_matrix(data_test, tree)
     return arrange, matrix
 
-##function for creating confusion matrix
-# @param tree
-# @param data test
-# @return matrix - confusion matrix
 def confusion_matrix(data_test, tree):
     matrix = {}
     for dt in data_test:
@@ -82,6 +78,7 @@ def data_matching(tree, data_test):
 ##find the list for test data
 # @param tree
 # @param dt element for which we are looking for a place
+
 def find(tree, dt):
     if tree[0].question is not None:
         place = tree[1].quantity
