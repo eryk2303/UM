@@ -1,0 +1,1 @@
+{'Iris-setosa': {'Iris-setosa': 7}, 'Iris-versicolor': {'Iris-versicolor': 12, 'Iris-virginica': 4}, 'Iris-virginica': {'Iris-virginica': 7}}
