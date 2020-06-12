@@ -49,13 +49,14 @@ def confusion_matrix(data_test, tree):
     for dt in data_test:
         place = find(tree, dt)
         tmp = dt[-1]
-        if tmp != matrix:
+        if tmp not in matrix:
             matrix[tmp] = {}
         max_value = max(place.values())
         max_keys = [k for k, v in place.items() if v == max_value]
-        if max_keys[0] != matrix[tmp]:
-            matrix[tmp][max_keys[0]] = 0 
-        if len(max_keys[0]) == 1:
+        if len(max_keys) == 1:
+            if max_keys[0] not in matrix[tmp]:
+                matrix[tmp][max_keys[0]] = 0 
+        if len(max_keys) == 1:
             matrix[tmp][max_keys[0]] += 1 
     return matrix
 
