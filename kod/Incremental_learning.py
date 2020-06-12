@@ -7,20 +7,28 @@ import Build
 ##function to find the same tree in old tree
 # @param tree - old tree
 # @param data current data
+# @return tree tree from old tree which can be used
 def find_tree(tree, data):
     if tree is not None:
         if tree[0].true_data and tree[0].false_data is not None:
-            difference_data = [item for item in tree[0].true_data + tree[0].false_data if item not in data]
-            if len(difference_data) != 0:
+            ##elements that are not in the old tree but are in new data
+            difference_old_tree = [item for item in tree[0].true_data + tree[0].false_data if item not in data]
+            if len(difference_old_tree) != 0:
                 return None
+            ##elements that are not in new data but are in the old tree
             difference_tree = [item for item in data if item not in tree[0].true_data + tree[0].false_data]
-            if len(difference_tree) == 0 and len(difference_data) == 0:
+            if len(difference_tree) == 0 and len(difference_old_tree) == 0:
                 return tree
             else:
                 if tree[0].right_next is not None:
                     return find_tree(tree[0].right_next, data)
                 if tree[0].left_next is not None:
                     return find_tree(tree[0].left_next, data)
+        else:
+            return None
+    else:
+        return None
+
 
 
 ##function for incremental learning
@@ -31,6 +39,7 @@ def find_tree(tree, data):
 def incremental_learning(data, tree):
     if tree is not None:
         if tree[0].right_next and tree[0].left_next is not None:
+            ##check split for old test
             gain_old, question_old, true_data_old, false_data_old = Split.check_split(data, tree[0].question)
 
             ##looking for an old tree in the old tree
@@ -41,7 +50,7 @@ def incremental_learning(data, tree):
                                             false_data_old), Build.Quantity(data)
 
             ##for the question from the old tree a good gain of information was obtained
-            if gain_old > 0.15:
+            if gain_old > 0.3:
                 if gain_old == 0:
                     return Build.Subtree_Values(None, None, None, gain_old, None, None), Build.Quantity(data)
                 right_next = incremental_learning(true_data_old, tree[0].right_next)
