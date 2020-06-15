@@ -4,7 +4,7 @@ import Incremental_learning
 import Build
 import Data
 
-##function to print tree
+##function used to print tree
 # @param element tree
 # @param space
 def print_tree(element, space=""):
@@ -22,7 +22,7 @@ def print_tree(element, space=""):
         print_tree(element[0].left_next, space + "  ")
 
 
-##function to build and print tree
+##function used to build and print tree
 # @param start - the data number in the csv file used to train the tree
 # @param quantity - quantity of data used to train the tree
 # @param data data for incremental learning
@@ -35,7 +35,7 @@ def print_basic_tree(start, quantity, data):
 
 
 
-##function to incremental learning and print tree
+##function used to incremental learning and print tree
 # @param start - the data number in the csv file used to train the tree
 # @param quantity - quantity of data used to train the tree
 # @param tree - old tree

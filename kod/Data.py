@@ -3,7 +3,7 @@ __author__ = '{Eryk Wawrzyn}'
 import csv
 import pandas as pd
 
-##function to read csv file
+##function used to read csv file
 # @param name name of data file
 # @return data readed data
 def read_csv_file(name):
@@ -13,7 +13,7 @@ def read_csv_file(name):
     return data
 
 
-##function to read data file
+##function used to read data file
 # @param name name of data file
 # @return data readed data
 def read_data_file(name):

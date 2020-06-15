@@ -3,7 +3,7 @@ __author__ = '{Eryk Wawrzyn}'
 import Mesure
 
 
-##function to find the best split
+##function  used to find the best split
 # @param training_elements list in which items will be split
 # @return best_gain_value the best find gain 
 # @return best_question_split the best find question to split
@@ -51,7 +51,7 @@ def make_split(training_data):
     return best_gain_value, best_question_split, best_true_data, best_false_data
 
 
-##function to do split for only one question 
+##function used to do split for only one question 
 # @param training_elements list in which items will be split
 # @return best_gain_value the best find gain 
 # @return best_question_split the best find question to split

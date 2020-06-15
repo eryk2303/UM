@@ -6,7 +6,7 @@ import Build
 import Print_tree
 
 
-##function to do test for basic tree
+##function used to do test for basic tree
 # @param quantity quantity of data used to tarin dree
 # @return match matching basic tree 
 # @return matrix confusion matrix
@@ -22,7 +22,7 @@ def for_basic_tree(quantity, data):
 
 
 
-##function to do test for tree with one incremental learning 
+##function used to do test for tree with one incremental learning 
 ## @param quantity_basic_tree quantity of data used to tarin basic tree
 # @param quantity quantity of data used to incremental learning 
 # @return match matching for incremental learning
@@ -40,7 +40,7 @@ def for_tree_incremental_learning(quantity_basic_tree, quantity, data):
     return match, matrix
 
 
-##function for creating confusion matrix
+##function used to create confusion matrix
 # @param tree
 # @param data test
 # @return matrix confusion_matrix
@@ -61,7 +61,7 @@ def confusion_matrix(data_test, tree):
     return matrix
 
 
-##function for calculating test data matching
+##function used to calculate test data matching
 # @param tree
 # @param data test
 # @return match
@@ -83,7 +83,7 @@ def data_matching(tree, data_test):
     return match
 
 
-##find the list for test data
+##function used to find the list for test data
 # @param trees
 # @param dt element for which we are looking for a place
 # @return tree[1].quantity leaf value

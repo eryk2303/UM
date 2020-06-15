@@ -4,7 +4,7 @@ import Split
 import Build
 
 
-##function to find the same tree in old tree
+##function used to find the same tree in old tree
 # @param tree - old tree
 # @param data current data
 # @return tree tree from old tree which can be used
@@ -49,7 +49,7 @@ def incremental_learning(data, tree):
                 return Build.Subtree_Values(question_old, tree[0].right_next, tree[0].left_next, gain_old, true_data_old,
                                             false_data_old), Build.Quantity(data)
 
-            ##for the question from the old tree a good gain of information was obtained
+            ##if gain_old is decent
             if gain_old > 0.3:
                 if gain_old == 0:
                     return Build.Subtree_Values(None, None, None, gain_old, None, None), Build.Quantity(data)

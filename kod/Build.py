@@ -4,7 +4,7 @@ import Split
 import Mesure
 
 
-##class with elemnet to save in all knots
+##class used to save elemnets in all knots
 class Subtree_Values:
     ##save information about knots
     def __init__(self, question, right_next, left_next, gain, true_data, false_data):
@@ -21,7 +21,7 @@ class Subtree_Values:
         ##list with false data - which did not match the query
         self.false_data = false_data
 
-##class with a dictionary in which the number of elements
+##class used to save information about number of elements
 class Quantity:
     ##save information about number of elements
     def __init__(self, data):
@@ -29,7 +29,7 @@ class Quantity:
         self.quantity = Mesure.count(data)
 
 
-##function to count all elements
+##function used to count all elements
 # @param training_elements list in which items will be counted
 # @return quantity of elements all elements
 def count_all(training_data):
@@ -40,7 +40,7 @@ def count_all(training_data):
     return quantity
 
 
-##function to build tree
+##function used to build tree
 # @param training_elements list of training elements
 # @return object Subtree_Values for knot
 # @return object Quantity for knot

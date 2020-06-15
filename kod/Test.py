@@ -9,7 +9,7 @@ import datetime
 import Data
 import _pickle as pickle
 
-##function to read and optimization bank data 
+##function used to read bank data 
 # @return data 
 def read_bank():
     data = Data.read_csv_file('bank.csv')
@@ -31,7 +31,7 @@ agaricus_incremental = Data.read_data_file('agaricus-lepiota.data')
 iris = Data.read_data_file('iris.data')
 
 
-##function to write match
+##function used to write match
 # @param name name of data 
 # @param match 
 def write_file(name, match):
@@ -41,7 +41,7 @@ def write_file(name, match):
     test_file.close()
 
 
-##function to write time
+##function used to write time
 # @param name name of data 
 # @param time
 def write_time(name, time):
@@ -51,7 +51,7 @@ def write_time(name, time):
     test_file.close()
 
 
-##function to write confusion matrix
+##function used to write confusion matrix
 # @param matrix confusion matrix
 # @param name name of data 
 def write_dict(matrix, name):
@@ -60,8 +60,8 @@ def write_dict(matrix, name):
      file.writelines('\n')
 
 
-##function for sending tests
-# @param quantity  quantity of data used to tarin dree
+##function used to do tests
+# @param quantity  quantity of data used to train tree
 # @return match  matching basic tree 
 def data_matching_for_basic_tree(quantity, name, data):
     print("Drzewo dla zbioru ", name)
@@ -74,7 +74,7 @@ def data_matching_for_basic_tree(quantity, name, data):
     return match
 
 
-##function for sending tests
+##function used to do tests
 ## @param quantity_basic_tree quantity of data used to tarin basic tree
 # @param quantity quantity of data used to incremental learning 
 # @return match matching for incremental learning
@@ -88,7 +88,8 @@ def data_matching_for_tree_incremental_learning(quantity_basic_tree, quantity, q
     write_time('%s_time_incremental_%f.txt' %(name, quantity_of_all), str(end - start))
     return match
 
-##function to do all tests
+
+##function used to do all tests
 def test():
     x = 1
     while x is not '0':

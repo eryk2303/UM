@@ -1,7 +1,7 @@
 __author__ = '{Eryk Wawrzyn}'
 
 
-##function to count elements in all attributes
+##function used to count elements in all attributes
 # @param training_elements list in which items will be counted
 # @return count_data dictionary with quantity of elements in all category
 def count(training_elements):
@@ -15,7 +15,7 @@ def count(training_elements):
     return count_data
 
 
-##function to calculate the gini coefficient
+##function used to calculate the gini coefficient
 # @param training_elements list in which items will be counted
 # @return 1 - giny_tmp gini coefficient
 def giny(training_data):
@@ -27,10 +27,10 @@ def giny(training_data):
     return 1 - giny_tmp
 
 
-##function to calculate the information gain
+##function used to calculate the information gain
 # @param false list of false elements in which the information gain will be counted
 # @param true list of true elements in which the information gain will be counted
-# @param current all list of true elements in which the information gain will be counted
+# @param current all list of all elements in which the information gain will be counted
 # @return info_gain information gain for current split
 def gain(false, true, current):
     help_value = float(len(false)) / (len(false) * len(true))
